@@ -1,25 +1,21 @@
 {
-  "name": "event-stream",
-  "version": "3.0.2",
-  "description": "construct pipes of streams of events",
-  "homepage": "http://github.com/dominictarr/event-stream",
+  "name": "split",
+  "version": "0.0.0",
+  "description": "split a Text Stream into a Line Stream",
+  "homepage": "http://github.com/dominictarr/split",
   "repository": {
     "type": "git",
-    "url": "git://github.com/dominictarr/event-stream.git"
+    "url": "git://github.com/dominictarr/split.git"
   },
   "dependencies": {
-    "optimist": "0.2",
-    "through": "0.0.4",
-    "duplexer": "~0.0.2",
-    "from": "~0",
-    "map-stream": "0.0.1",
-    "pause-stream": "0.0.4"
+    "through": "0.0.4"
   },
   "devDependencies": {
     "asynct": "*",
     "it-is": "1",
     "ubelt": "~2.9",
-    "stream-spec": "~0.2"
+    "stream-spec": "~0.2",
+    "event-stream": "~3.0.2"
   },
   "scripts": {
     "test": "asynct test/"

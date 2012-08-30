@@ -1,6 +1,7 @@
-var es = require('../')
+var es = require('event-stream')
   , it = require('it-is').style('colour')
   , d = require('ubelt')
+  , split = require('..')
   , join = require('path').join
   , fs = require('fs')
   , Stream = require('stream').Stream
@@ -9,7 +10,7 @@ var es = require('../')
 exports ['es.split() works like String#split'] = function (test) {
   var readme = join(__filename)
     , expected = fs.readFileSync(readme, 'utf-8').split('\n')
-    , cs = es.split()
+    , cs = split()
     , actual = []
     , ended = false
     , x = spec(cs).through()
