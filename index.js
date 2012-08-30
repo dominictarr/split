@@ -10,8 +10,12 @@ var through = require('through')
 
 module.exports = split
 
-function split (matcher) {
+//TODO pass in a function to map across the lines.
+
+function split (matcher, mapper) {
   var soFar = ''
+  if('function' === typeof matcher)
+    mapper = matcher, matcher = null
   if (!matcher)
     matcher = '\n'
 
@@ -21,7 +25,13 @@ function split (matcher) {
     soFar = pieces.pop()
 
     pieces.forEach(function (piece) {
-      stream.emit('data', piece)
+      if(mapper) {
+        piece = mapper(piece)
+        if('undefined' !== typeof piece)
+          stream.emit('data', piece)
+      }
+      else
+        stream.emit('data', piece)
     })
 
     return true
