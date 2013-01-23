@@ -24,7 +24,8 @@ function split (matcher, mapper) {
       , pieces = (soFar + buffer).split(matcher)
     soFar = pieces.pop()
 
-    pieces.forEach(function (piece) {
+    for (var i = 0; i < pieces.length; i++) {
+      var piece = pieces[i]
       if(mapper) {
         piece = mapper(piece)
         if('undefined' !== typeof piece)
@@ -32,7 +33,7 @@ function split (matcher, mapper) {
       }
       else
         stream.emit('data', piece)
-    })
+    }
 
     return true
   },
