@@ -8,7 +8,7 @@
     "url": "git://github.com/dominictarr/split.git"
   },
   "dependencies": {
-    "through": "1"
+    "through": "2"
   },
   "devDependencies": {
     "asynct": "*",
