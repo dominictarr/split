@@ -29,18 +29,16 @@ function split (matcher, mapper) {
       if(mapper) {
         piece = mapper(piece)
         if('undefined' !== typeof piece)
-          stream.emit('data', piece)
+          stream.queue(piece)
       }
       else
-        stream.emit('data', piece)
+        stream.queue(piece)
     }
-
-    return true
   },
   function () {
     if(soFar)
-      this.emit('data', soFar)  
-    this.emit('end')
+      this.queue(soFar)  
+    this.queue(null)
   })
 }
 
