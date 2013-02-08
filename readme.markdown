@@ -15,6 +15,6 @@ Example, read every line in a file ...
 
 ```
 
-`split` takes the same arguments as `string.split` except it defaults to '\n' instead of ',', and the optional `limit` paremeter is ignored.
+`split` takes the same arguments as `string.split` except it defaults to '/\r?\n/' instead of ',', and the optional `limit` paremeter is ignored.
 [String#split](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String/split)
 
