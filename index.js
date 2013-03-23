@@ -36,7 +36,7 @@ function split (matcher, mapper) {
     }
   },
   function () {
-    if(soFar)
+    if(soFar != null)
       this.queue(soFar)  
     this.queue(null)
   })
