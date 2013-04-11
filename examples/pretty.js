@@ -1,11 +1,12 @@
 
 var inspect = require('util').inspect
+var es      = require('event-stream')     //load event-stream
+var split   = require('../')
 
 if(!module.parent) {
-  var es = require('..')              //load event-stream
   es.pipe(                            //pipe joins streams together
     process.openStdin(),              //open stdin
-    es.split(),                       //split stream to break on newlines
+    split(),                       //split stream to break on newlines
     es.map(function (data, callback) {//turn this async function into a stream
       var j 
       try {
