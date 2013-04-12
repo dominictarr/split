@@ -17,7 +17,7 @@ function split (matcher, mapper) {
   if('function' === typeof matcher)
     mapper = matcher, matcher = null
   if (!matcher)
-    matcher = '\n'
+    matcher = /\r?\n/
 
   return through(function (buffer) { 
     var stream = this
