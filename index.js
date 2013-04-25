@@ -19,25 +19,28 @@ function split (matcher, mapper) {
   if (!matcher)
     matcher = /\r?\n/
 
+  function emit(stream, piece) {
+    if(mapper) {
+      piece = mapper(piece)
+      if('undefined' !== typeof piece)
+        stream.queue(piece)
+    }
+    else
+      stream.queue(piece)
+  }
+
   return through(function (buffer) { 
-    var stream = this
-      , pieces = (soFar + buffer).split(matcher)
+    var pieces = (soFar + buffer).split(matcher)
     soFar = pieces.pop()
 
     for (var i = 0; i < pieces.length; i++) {
       var piece = pieces[i]
-      if(mapper) {
-        piece = mapper(piece)
-        if('undefined' !== typeof piece)
-          stream.queue(piece)
-      }
-      else
-        stream.queue(piece)
+      emit(this, piece)
     }
   },
   function () {
     if(soFar != null)
-      this.queue(soFar)  
+      emit(this, soFar)
     this.queue(null)
   })
 }
