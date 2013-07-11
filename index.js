@@ -21,7 +21,12 @@ function split (matcher, mapper) {
 
   function emit(stream, piece) {
     if(mapper) {
-      piece = mapper(piece)
+      try {
+        piece = mapper(piece)
+      }
+      catch (err) {
+        return stream.emit('error', err)
+      }
       if('undefined' !== typeof piece)
         stream.queue(piece)
     }
