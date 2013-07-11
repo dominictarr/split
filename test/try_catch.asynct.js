@@ -14,14 +14,12 @@ exports ['emit mapper exceptions as error events'] = function (test) {
 
   s.write('{"a":1}\n{"')
   it(caughtError).equal(false)
-  s.write('b":2}\n{"c":}')
+  it(rows).deepEqual([ { a: 1 } ])
+
+  s.write('b":2}\n{"c":}\n')
   it(caughtError).equal(true)
+  it(rows).deepEqual([ { a: 1 }, { b: 2 } ])
+
   s.end()
- 
-  it(rows).deepEqual([
-    { a: 1 },
-    { b: 2 }
-  ])
- 
   test.done()
 }
