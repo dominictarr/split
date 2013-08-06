@@ -12,7 +12,8 @@ exports ['split data with partitioned unicode character'] = function (test) {
  
   s.on('data', function (row) { rows.push(row) })
 
-  unicodeData = new Buffer('テスト試験今日とても,よい天気で');
+  var x = 'テスト試験今日とても,よい天気で'
+  unicodeData = new Buffer(x);
 
   // partition of 日
   piece1 = unicodeData.slice(0, 20);
@@ -24,7 +25,10 @@ exports ['split data with partitioned unicode character'] = function (test) {
   s.end()
 
   it(caughtError).equal(false)
+
   it(rows).deepEqual(['テスト試験今日とても', 'よい天気で']);
+
+  it(rows).deepEqual(x.split(','))
 
   test.done()
 }
