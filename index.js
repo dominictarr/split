@@ -49,7 +49,8 @@ function split (matcher, mapper) {
     next(this, decoder.write(b))
   },
   function () {
-    next(this, decoder.end())
+    if(decoder.end) 
+      next(this, decoder.end())
     if(soFar != null)
       emit(this, soFar)
     this.queue(null)
