@@ -1,6 +1,6 @@
 # Split (matcher)
 
-<img src=https://secure.travis-ci.org/dominictarr/split.png?branch=master>
+[![build status](https://secure.travis-ci.org/dominictarr/split.png)](http://travis-ci.org/dominictarr/split)
 
 Break up a stream and reassemble it so that each line is a chunk. matcher may be a `String`, or a `RegExp` 
 
