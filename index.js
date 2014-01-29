@@ -12,9 +12,10 @@ module.exports = split
 
 //TODO pass in a function to map across the lines.
 
-function split (matcher, mapper) {
+function split (matcher, mapper, options) {
   var decoder = new Decoder()
   var soFar = ''
+  var maxLength = options && options.maxLength;
   if('function' === typeof matcher)
     mapper = matcher, matcher = null
   if (!matcher)
@@ -38,6 +39,9 @@ function split (matcher, mapper) {
   function next (stream, buffer) { 
     var pieces = (soFar + buffer).split(matcher)
     soFar = pieces.pop()
+
+    if (maxLength && soFar.length > maxLength)
+      stream.emit('error', new Error('maximum buffer reached'))
 
     for (var i = 0; i < pieces.length; i++) {
       var piece = pieces[i]

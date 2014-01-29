@@ -18,6 +18,20 @@ Example, read every line in a file ...
 `split` takes the same arguments as `string.split` except it defaults to '/\r?\n/' instead of ',', and the optional `limit` paremeter is ignored.
 [String#split](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String/split)
 
+`split` takes an optional options object on it's third argument.
+
+``` js
+  split(matcher, mapper, options)
+```
+
+Valid options:
+
+* maxLength - The maximum buffer length without seeing a newline or `matcher`
+
+``` js
+  split(JSON.parse, null, { maxLength: 2})
+```
+
 # NDJ - Newline Delimited Json
 
 `split` accepts a function which transforms each line.
