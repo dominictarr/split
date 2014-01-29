@@ -26,7 +26,8 @@ Example, read every line in a file ...
 
 Valid options:
 
-* maxLength - The maximum buffer length without seeing a newline or `matcher`
+* maxLength - The maximum buffer length without seeing a newline or `matcher`,
+  if a single line exceeds this, the split stream will emit an error.
 
 ``` js
   split(JSON.parse, null, { maxLength: 2})
