@@ -15,7 +15,7 @@ module.exports = split
 function split (matcher, mapper, options) {
   var decoder = new Decoder()
   var soFar = ''
-  var bufferLimit = options && options.bufferLimit;
+  var maxLength = options && options.maxLength;
   if('function' === typeof matcher)
     mapper = matcher, matcher = null
   if (!matcher)
@@ -40,7 +40,7 @@ function split (matcher, mapper, options) {
     var pieces = (soFar + buffer).split(matcher)
     soFar = pieces.pop()
 
-    if (bufferLimit && soFar.length > bufferLimit)
+    if (maxLength && soFar.length > maxLength)
       stream.emit('error', new Error('maximum buffer reached'))
 
     for (var i = 0; i < pieces.length; i++) {

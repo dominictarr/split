@@ -3,7 +3,7 @@ var it = require('it-is').style('colour')
 
 exports ['maximum buffer limit'] = function (test) {
   var s = split(JSON.parse, null, {
-    bufferLimit: 2
+    maxLength: 2
   })
     , caughtError = false
     , rows = []
