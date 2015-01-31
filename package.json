@@ -13,10 +13,10 @@
   },
   "devDependencies": {
     "asynct": "*",
+    "event-stream": "~3.0.2",
     "it-is": "1",
-    "ubelt": "~2.9",
     "stream-spec": "~0.2",
-    "event-stream": "~3.0.2"
+    "ubelt": "~2.9"
   },
   "scripts": {
     "test": "asynct test/"
