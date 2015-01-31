@@ -36,8 +36,8 @@ function split (matcher, mapper, options) {
       stream.queue(piece)
   }
 
-  function next (stream, buffer) { 
-    var pieces = (soFar + buffer).split(matcher)
+  function next (stream, buffer) {
+    var pieces = ((soFar != null ? soFar : '') + buffer).split(matcher)
     soFar = pieces.pop()
 
     if (maxLength && soFar.length > maxLength)
@@ -53,7 +53,7 @@ function split (matcher, mapper, options) {
     next(this, decoder.write(b))
   },
   function () {
-    if(decoder.end) 
+    if(decoder.end)
       next(this, decoder.end())
     if(soFar != null)
       emit(this, soFar)
