@@ -21,3 +21,25 @@ exports ['maximum buffer limit'] = function (test) {
   s.end()
   test.done()
 }
+
+exports ['ignore trailing buffers'] = function (test) {
+  var s = split(JSON.parse, null, {
+    ignoreTrailing: true
+  })
+    , caughtError = false
+    , rows = []
+
+  s.on('error', function (err) {
+    caughtError = true
+  })
+
+  s.on('data', function (row) { rows.push(row) })
+
+  s.write('{"a":1}\n{"')
+  s.write('{    "')
+  it(caughtError).equal(false)
+  it(rows).deepEqual([ { a: 1 } ])
+
+  s.end()
+  test.done()
+}

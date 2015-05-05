@@ -33,6 +33,12 @@ Valid options:
   split(JSON.parse, null, { maxLength: 2})
 ```
 
+* ignoreTrailing - By default the last buffer not delimited by a newline or `matcher` will be emitted. To prevent this set `ignoreTrailing`.
+
+``` js
+  split(JSON.parse, null, { ignoreTrailing: true })
+```
+
 ## keep matched splitter
 
 As with `Array#split`, if you split by a regular expression with a matching group,
