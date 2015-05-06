@@ -16,7 +16,7 @@ function split (matcher, mapper, options) {
   var decoder = new Decoder()
   var soFar = ''
   var maxLength = options && options.maxLength;
-  var ignoreTrailing = options && !!options.ignoreTrailing || false;
+  var trailing = options && options.trailing === false ? false : true
   if('function' === typeof matcher)
     mapper = matcher, matcher = null
   if (!matcher)
@@ -56,7 +56,7 @@ function split (matcher, mapper, options) {
   function () {
     if(decoder.end)
       next(this, decoder.end())
-    if (! ignoreTrailing && soFar != null)
+    if(trailing && soFar != null)
       emit(this, soFar)
     this.queue(null)
   })

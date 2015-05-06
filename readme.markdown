@@ -33,10 +33,10 @@ Valid options:
   split(JSON.parse, null, { maxLength: 2})
 ```
 
-* ignoreTrailing - By default the last buffer not delimited by a newline or `matcher` will be emitted. To prevent this set `ignoreTrailing`.
+* trailing - By default the last buffer not delimited by a newline or `matcher` will be emitted. To prevent this set `options.trailing` to `false`.
 
 ``` js
-  split(JSON.parse, null, { ignoreTrailing: true })
+  split(JSON.parse, null, { trailing: false })
 ```
 
 ## keep matched splitter
