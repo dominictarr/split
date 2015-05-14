@@ -18,7 +18,7 @@ function split (matcher, mapper, options) {
   var maxLength = options && options.maxLength;
   if('function' === typeof matcher)
     mapper = matcher, matcher = null
-  if (!matcher)
+  if (typeof matcher !== "string" && !matcher)
     matcher = /\r?\n/
 
   function emit(stream, piece) {
