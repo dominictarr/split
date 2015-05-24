@@ -1,6 +1,6 @@
 {
   "name": "split",
-  "version": "0.3.3",
+  "version": "1.0.0",
   "license": "MIT",
   "description": "split a Text Stream into a Line Stream",
   "homepage": "http://github.com/dominictarr/split",
