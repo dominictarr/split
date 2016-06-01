@@ -130,8 +130,8 @@ exports ['split() works with empty string chunks'] = function (test) {
 
 }
 
-function splitBy (delimeter) {
+function splitBy (delimiter) {
   return function (arr, piece) {
-    return arr.concat(piece.split(delimeter))
+    return arr.concat(piece.split(delimiter))
   }
 }
