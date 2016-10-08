@@ -41,7 +41,7 @@ Valid options:
 
 ## keep matched splitter
 
-As with `Array#split`, if you split by a regular expression with a matching group,
+As with `String#split`, if you split by a regular expression with a matching group,
 the matches will be retained in the collection.
 
 ```
