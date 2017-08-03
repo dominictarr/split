@@ -42,7 +42,7 @@ function split (matcher, mapper, options) {
     soFar = pieces.pop()
 
     if (maxLength && soFar.length > maxLength)
-      stream.emit('error', new Error('maximum buffer reached'))
+      return stream.emit('error', new Error('maximum buffer reached'))
 
     for (var i = 0; i < pieces.length; i++) {
       var piece = pieces[i]
