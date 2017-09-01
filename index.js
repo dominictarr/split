@@ -2,7 +2,7 @@
 
 // reduce is more tricky
 // maybe we want to group the reductions or emit progress updates occasionally
-// the most basic reduce just emits one 'data' event after it has recieved 'end'
+// the most basic reduce just emits one 'data' event after it has received 'end'
 
 
 var through = require('through')
