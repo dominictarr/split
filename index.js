@@ -19,7 +19,7 @@ function split (matcher, mapper, options) {
   var trailing = options && options.trailing === false ? false : true
   if('function' === typeof matcher)
     mapper = matcher, matcher = null
-  if (!matcher)
+  if (typeof matcher !== "string" && !matcher)
     matcher = /\r?\n/
 
   function emit(stream, piece) {
