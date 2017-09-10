@@ -38,7 +38,17 @@ function split (matcher, mapper, options) {
   }
 
   function next (stream, buffer) {
-    var pieces = ((soFar != null ? soFar : '') + buffer).split(matcher)
+    var bufs = ((soFar != null ? soFar : '') + buffer);
+    var pieces = [];
+
+    if(options && 'function' === typeof options.split) {
+      pieces = options.split(bufs, matcher);
+    } else if(!isNaN(parseFloat(matcher)) && isFinite(matcher)) {
+      pieces = bufs.match(new RegExp(".{1,"+matcher+"}", "g"));
+    } else {
+      pieces = bufs.split(matcher);
+    }
+    
     soFar = pieces.pop()
 
     if (maxLength && soFar.length > maxLength)
