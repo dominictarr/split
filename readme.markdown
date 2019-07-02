@@ -39,6 +39,14 @@ Valid options:
   split(JSON.parse, null, { trailing: false })
 ```
 
+* keepDelimiter - By default, delimiters are thrown away.  Set this property `true` to keep the trailing delimiter characters at the end of the line. You will also need to keep matched splitter as instructed as follows.  
+
+``` js
+  split(/(\r?\n)/, { keepDelimiter: true }) // Must also use matching group in RE
+  // Example output: line\n
+```
+
+
 ## keep matched splitter
 
 As with `String#split`, if you split by a regular expression with a matching group,

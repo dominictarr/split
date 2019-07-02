@@ -16,6 +16,7 @@ function split (matcher, mapper, options) {
   var decoder = new Decoder()
   var soFar = ''
   var maxLength = options && options.maxLength;
+  var keepDelimiter = options && options.keepDelimiter === true ? true : false
   var trailing = options && options.trailing === false ? false : true
   if('function' === typeof matcher)
     mapper = matcher, matcher = null
@@ -44,6 +45,14 @@ function split (matcher, mapper, options) {
     if (maxLength && soFar.length > maxLength)
       return stream.emit('error', new Error('maximum buffer reached'))
 
+    if(keepDelimiter) {
+      pieces.length % 2 && pieces.push('') // Add trailing empty string if odd elements
+      for (var i = 0; i < pieces.length; i+=2) {
+        var piece = pieces[i] + pieces[i+1]
+        emit(stream,piece)
+      }
+      return
+    }
     for (var i = 0; i < pieces.length; i++) {
       var piece = pieces[i]
       emit(stream, piece)
